@@ -1,9 +1,19 @@
 <template>
-    <div class="about">
-        <h1>This is an about page</h1>
+    <div class="bg-base-300 p-2 rounded-md">
+        <div v-if="title" class="divider">
+            <v-slot name="title">
+                {{ title }}
+            </v-slot>
+        </div>
     </div>
-    </template>
-<style>
-    
-</style>
+</template>
+
+<script lang="ts">
+export default {
+    name : 'Card',
+    props : {
+        title : String
+    },
+}
+</script>
   
