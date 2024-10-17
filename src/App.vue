@@ -6,11 +6,16 @@
 					<img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
 					<span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">A.V.M</span>
 				</a>
-				<div class="flex gap-4">
+				<div class="flex gap-4 items-center overflow-hidden">
+					<RouterLink to="/download">
+						<span class="mdi mdi-download-box-outline text-lg"></span>
+						Download
+					</RouterLink>
 					<RouterLink to="/">Test</RouterLink>
 					<RouterLink to="/">Test</RouterLink>
-					<RouterLink to="/">Test</RouterLink>
-					<RouterLink to="/">Test</RouterLink>
+					<RouterLink to="/" title="Logout">
+						<span class="mdi mdi-logout-variant text-xl"></span>
+					</RouterLink>
 				</div>
 			</div>
 
