@@ -40,7 +40,7 @@ export default {
 			colors: {
 				'primary': '#1e5b8a',
 				'primary-focus': '#164265',
-				'primary-content': '#B3D8F5',
+				'primary-content': '#FFF',
 				
 				'secondary': '#d18b42',
 				'secondary-focus': '#B36F33',
