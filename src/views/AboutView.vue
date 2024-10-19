@@ -1,5 +1,5 @@
 <template>
-  <Card title="Title test"></Card>
+  <Card :title="$route.name"></Card>
 </template>
 
 <script lang="ts">
