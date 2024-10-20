@@ -5,3 +5,7 @@
 body {
     @apply bg-base-100
 }
+
+.active span:first-of-type {
+	@apply bg-primary-focus
+}
