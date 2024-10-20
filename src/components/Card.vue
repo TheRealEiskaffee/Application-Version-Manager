@@ -5,15 +5,24 @@
                 {{ title }}
             </v-slot>
         </div>
+
+        <div class="">
+            <slot></slot>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
+import { getCurrentInstance } from 'vue';
+
 export default {
     name : 'Card',
     props : {
         title : String
     },
+    data : () => ({
+        _id : getCurrentInstance()?.uid
+    })
 }
 </script>
   

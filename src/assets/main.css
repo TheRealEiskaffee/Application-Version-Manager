@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font is Inter */
+
 body {
-    @apply bg-base-100
+    @apply bg-base-100;
 }
 
 .active span:first-of-type {

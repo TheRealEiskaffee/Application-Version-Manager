@@ -31,9 +31,6 @@ const router = createRouter({
 			icon : 'mdi-view-dashboard-variant',
 			showName : true
 		},
-		// route level code-splitting
-		// this generates a separate chunk (About.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
 		component: () => import('../views/AboutView.vue')
 	},
 	{
@@ -44,10 +41,7 @@ const router = createRouter({
 			icon : 'mdi-source-merge',
 			showName : true
 		},
-		// route level code-splitting
-		// this generates a separate chunk (About.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
-		component: () => import('../views/AboutView.vue')
+		component: () => import('../views/Versions.vue')
 	},
 	{
 		path: '/download',
@@ -57,9 +51,6 @@ const router = createRouter({
 			icon : 'mdi-download',
 			showName : true
 		},
-		// route level code-splitting
-		// this generates a separate chunk (About.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
 		component: () => import('../views/Download.vue')
 	},
 	{
@@ -70,9 +61,6 @@ const router = createRouter({
 			icon : 'mdi-cog',
 			showName : true
 		},
-		// route level code-splitting
-		// this generates a separate chunk (About.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
 		component: () => import('../views/AboutView.vue')
 	},
 	{
