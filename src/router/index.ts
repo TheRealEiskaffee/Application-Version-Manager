@@ -14,7 +14,7 @@ function generateObjectId() {
     return `${timestamp}${machineId}${processId}${counter}`;
 }
 
-const router = createRouter({
+export default createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	scrollBehavior() {
 		return {
@@ -22,57 +22,55 @@ const router = createRouter({
 			behavior: 'smooth',
 		}
 	},
-	routes: [
-	{
+	routes : [{
 		path: '/dashboard',
 		name: 'Dashboard',
 		meta : {
 			_id : generateObjectId(),
 			icon : 'mdi-view-dashboard-variant',
-			showName : true
+			showName : true,
+			sortIndex : 1,
 		},
 		component: () => import('../views/AboutView.vue')
-	},
-	{
+	}, {
 		path: '/versions',
 		name: 'Versions',
 		meta : {
 			_id : generateObjectId(),
 			icon : 'mdi-source-merge',
-			showName : true
+			showName : true,
+			sortIndex : 2,
 		},
 		component: () => import('../views/Versions.vue')
-	},
-	{
+	}, {
 		path: '/download',
 		name: 'Download',
 		meta : {
 			_id : generateObjectId(),
 			icon : 'mdi-download',
-			showName : true
+			showName : true,
+			sortIndex : 3,
 		},
 		component: () => import('../views/Download.vue')
-	},
-	{
+	}, {
 		path: '/settings',
 		name: 'Settings',
 		meta : {
 			_id : generateObjectId(),
 			icon : 'mdi-cog',
-			showName : true
+			showName : true,
+			sortIndex : 4,
 		},
 		component: () => import('../views/AboutView.vue')
-	},
-	{
+	}, {
 		path: '/logout',
 		name: 'Logout',
 		meta : {
 			_id : generateObjectId(),
 			icon : 'mdi-logout',
-			showName : false
+			showName : false,
+			sortIndex : 6,
 		},
 		redirect : ''
-	}]
+	}],
 })
-
-export default router

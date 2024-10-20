@@ -9,7 +9,6 @@
 <script lang="ts">
 import Card from '@/components/Card.vue';
 import SimpleDate from 'simple-date-operation';
-import useVersionStore from '@/stores/version';
 
 export default {
     components : {
@@ -18,7 +17,7 @@ export default {
     setup() {
         return {
 			store : {
-				versions : useVersionStore()
+                
 			},
             SimpleDate,
         }

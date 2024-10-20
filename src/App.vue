@@ -6,9 +6,9 @@
 			</a>
 
 			<div class="flex gap-2 items-center">
-				<RouterLink :to="path" active-class="active" :title="name" class="flex items-center space-2 gap-2 group" v-for="({ meta, name, path }, index) in $router.options.routes" :key="`menu-${index}`" @mouseenter="slideMenuName(path, 'open')" @mouseleave="slideMenuName(path, 'close')">
+				<RouterLink :to="path" active-class="active" :title="name" class="flex items-center space-2 gap-2 group" v-for="({ meta, name, path }, index) in cMenu" :key="`menu-${index}`" @mouseenter="slideMenuName(path, 'open')" @mouseleave="slideMenuName(path, 'close')">
 					<span :class="[meta?.icon]" class="mdi text-xl group-hover:bg-primary-focus mask mask-squircle p-3 transition-all duration-150"></span>
-					<span :id="`nav-menu-${meta?._id}`" :style="meta?._id === $route?.meta?._id && meta?.showName ? `width: ${String(name)?.length*9}px !important` : ''" class="w-0 ease-out select-none overflow-hidden transition-all duration-300 text-sm tracking-wider">{{ name }}</span>
+					<span :id="`nav-menu-${meta?._id}`" :style="meta?._id === $route?.meta?._id && meta?.showName ? `width: ${String(name)?.length*9}px !important` : ''" class="w-0 ease-out select-none overflow-hidden transition-all duration-300 text-sm tracking-wider whitespace-nowrap">{{ name }}</span>
 				</RouterLink>
 			</div>
 		</div>
@@ -21,7 +21,10 @@
 </template>
 
 <script lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterLink, RouterView, useRouter } from 'vue-router';
+import { useMainStore } from './stores/main';
+import { orderBy } from 'lodash';
+import AboutView from './views/AboutView.vue';
 
 export default {
 	components : {
@@ -30,7 +33,9 @@ export default {
 	},
 	setup() {
 		return {
+			router : useRouter(),
 			store : {
+				main : useMainStore(),
 			}
 		}
 	},
@@ -38,17 +43,36 @@ export default {
 
 	},
 	data: () => ({
-
+		refreshMenu : 0,
 	}),
 	computed: {
+		cMenu() {
+			this.refreshMenu;
 
+			return orderBy(this.router.getRoutes(), 'meta.sortIndex', 'asc');
+		}
 	},
 	created() {
-		
+		// Just for testing
+		setTimeout(() => {
+			this.router.addRoute({
+				path: '/profile',
+				name: this.store.main.user.name,
+				meta : {
+					_id : this.store.main.generateObjectId(),
+					icon : 'mdi-account',
+					showName : true,
+					sortIndex : 5,
+				},
+				component: AboutView
+			});
+			
+			this.refreshMenu++;
+		}, 2000);
 	},
 	methods : {
 		slideMenuName(path : any, action : 'open' | 'close') {
-			const routeData = this.$router.resolve(path);
+			const routeData = this.router.resolve(path);
 
 			if(routeData?.meta?.showName && routeData?.meta?._id !== this.$route?.meta?._id) {
 				const navBar = document.getElementById(`nav-menu-${routeData.meta._id}`);

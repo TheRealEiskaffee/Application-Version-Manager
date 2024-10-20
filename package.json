@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^1.7.7",
+    "lodash": "^4.17.21",
     "pinia": "^2.2.4",
     "simple-date-operation": "^1.1.41",
     "vue": "^3.5.11",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@mdi/font": "^7.4.47",
     "@tsconfig/node20": "^20.1.4",
+    "@types/lodash": "^4.17.12",
     "@types/node": "^20.16.11",
     "@vitejs/plugin-vue": "^5.1.4",
     "@vue/tsconfig": "^0.5.1",
