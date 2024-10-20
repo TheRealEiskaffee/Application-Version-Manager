@@ -61,7 +61,7 @@ export default createRouter({
 			showName : true,
 			sortIndex : 4,
 		},
-		component: () => import('../views/AboutView.vue')
+		component: () => import('../views/Settings.vue')
 	}, {
 		path: '/logout',
 		name: 'Logout',

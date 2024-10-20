@@ -6,7 +6,12 @@ export const useMainStore = defineStore('main', {
             name: 'David Koch',
             loggedIn: false
         },
-        items: []
+        settings : {
+            nav : {
+                animation : true
+            },
+            theme : 'default'
+        },
     }),
 
     getters: {

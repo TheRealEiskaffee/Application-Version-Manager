@@ -5,9 +5,9 @@
 				<img src="@/assets/logo.png" class="h-14" />
 			</a>
 
-			<div class="flex gap-2 items-center">
-				<RouterLink :to="path" active-class="active" :title="name" class="flex items-center space-2 gap-2 group" v-for="({ meta, name, path }, index) in cMenu" :key="`menu-${index}`" @mouseenter="slideMenuName(path, 'open')" @mouseleave="slideMenuName(path, 'close')">
-					<span :class="[meta?.icon]" class="mdi text-xl group-hover:bg-primary-focus mask mask-squircle p-3 transition-all duration-150"></span>
+			<div class="flex items-center">
+				<RouterLink :to="path" active-class="active" :title="name" class="flex items-center space-2 gap-2 group px-1" v-for="({ meta, name, path }, index) in cMenu" :key="`menu-${index}`" @mouseenter="slideMenuName(path, 'open')" @mouseleave="slideMenuName(path, 'close')">
+					<span :class="[meta?.icon]" class="mdi text-xl group-hover:bg-secondary-focus mask mask-squircle p-3 transition-all duration-150"></span>
 					<span :id="`nav-menu-${meta?._id}`" :style="meta?._id === $route?.meta?._id && meta?.showName ? `width: ${String(name)?.length*9}px !important` : ''" class="w-0 ease-out select-none overflow-hidden transition-all duration-300 text-sm tracking-wider whitespace-nowrap">{{ name }}</span>
 				</RouterLink>
 			</div>
@@ -15,7 +15,7 @@
 		
 	</nav>
 
-	<div class="h-full min-h-screen py-4 mx-16">
+	<div class="h-full min-h-screen p-4 ">
 		<RouterView />
 	</div>
 </template>
@@ -72,17 +72,19 @@ export default {
 	},
 	methods : {
 		slideMenuName(path : any, action : 'open' | 'close') {
-			const routeData = this.router.resolve(path);
-
-			if(routeData?.meta?.showName && routeData?.meta?._id !== this.$route?.meta?._id) {
-				const navBar = document.getElementById(`nav-menu-${routeData.meta._id}`);
+			if(this.store.main.settings.nav.animation) {
+				const routeData = this.router.resolve(path);
 	
-				if(navBar) {
-				    if(action === 'open') {
-				        navBar.style.width = `${navBar.innerText.length*9}px`;
-				    } else {
-				        navBar.style.width = '0'
-				    }
+				if(routeData?.meta?.showName && routeData?.meta?._id !== this.$route?.meta?._id) {
+					const navBar = document.getElementById(`nav-menu-${routeData.meta._id}`);
+		
+					if(navBar) {
+						if(action === 'open') {
+							navBar.style.width = `${navBar.innerText.length*9}px`;
+						} else {
+							navBar.style.width = '0'
+						}
+					}
 				}
 			}
         },
