@@ -15,7 +15,7 @@
 		
 	</nav>
 
-	<div class="h-full min-h-screen p-4 ">
+	<div class="h-full min-h-screen py-4 ">
 		<RouterView />
 	</div>
 </template>
