@@ -23,6 +23,10 @@ export default createRouter({
 		}
 	},
 	routes : [{
+		path: '/',
+		name: 'Home',
+		redirect : '/dashboard'
+	}, {
 		path: '/dashboard',
 		name: 'Dashboard',
 		meta : {
@@ -74,8 +78,9 @@ export default createRouter({
 				_id : generateObjectId(),
 				icon : 'mdi-application-cog-outline',
 				showName : false,
+				sortIndex : 1,
 			},
-			component: () => import('../views/AboutView.vue')
+			component: () => import('../views/settings/Application.vue')
 		}, {
 			path: '/settings/api',
 			name: 'API',
@@ -83,6 +88,7 @@ export default createRouter({
 				_id : generateObjectId(),
 				icon : 'mdi-apple-icloud',
 				showName : false,
+				sortIndex : 2,
 			},
 			component: () => import('../views/Download.vue')
 		}, {
@@ -92,6 +98,7 @@ export default createRouter({
 				_id : generateObjectId(),
 				icon : 'mdi-disc',
 				showName : false,
+				sortIndex : 3,
 			},
 			component: () => import('../views/Download.vue')
 		}, {
@@ -101,6 +108,7 @@ export default createRouter({
 				_id : generateObjectId(),
 				icon : 'mdi-account-multiple',
 				showName : false,
+				sortIndex : 4,
 			},
 			component: () => import('../views/Download.vue')
 		}, {
@@ -110,6 +118,7 @@ export default createRouter({
 				_id : generateObjectId(),
 				icon : 'mdi-integrated-circuit-chip',
 				showName : false,
+				sortIndex : 5,
 			},
 			component: () => import('../views/Download.vue')
 		}],

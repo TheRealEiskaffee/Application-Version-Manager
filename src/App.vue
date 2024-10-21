@@ -49,26 +49,10 @@ export default {
 		cMenu() {
 			this.refreshMenu;
 
-			return orderBy(this.router.options.routes, 'meta.sortIndex', 'asc');
+			return orderBy(this.router.options.routes?.filter(({ meta }) => meta?._id), 'meta.sortIndex', 'asc');
 		}
 	},
 	created() {
-		// Just for testing
-		setTimeout(() => {
-			this.router.addRoute({
-				path: '/profile',
-				name: this.store.main.user.name,
-				meta : {
-					_id : this.store.main.generateObjectId(),
-					icon : 'mdi-account',
-					showName : true,
-					sortIndex : 5,
-				},
-				component: AboutView
-			});
-			
-			this.refreshMenu++;
-		}, 2000);
 	},
 	methods : {
 		slideMenuName(path : any, action : 'open' | 'close') {
