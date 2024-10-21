@@ -61,7 +61,58 @@ export default createRouter({
 			showName : true,
 			sortIndex : 4,
 		},
-		component: () => import('../views/Settings.vue')
+		component: () => import('../views/Settings.vue'),
+		// beforeEnter() {
+		// 	createRouter().push()
+		// },
+		// redirect : '/settings/application',
+		redirect: { path: '/settings/application' },
+		children : [{
+			path: '/settings/application',
+			name: 'Application',
+			meta : {
+				_id : generateObjectId(),
+				icon : 'mdi-application-cog-outline',
+				showName : false,
+			},
+			component: () => import('../views/AboutView.vue')
+		}, {
+			path: '/settings/api',
+			name: 'API',
+			meta : {
+				_id : generateObjectId(),
+				icon : 'mdi-apple-icloud',
+				showName : false,
+			},
+			component: () => import('../views/Download.vue')
+		}, {
+			path: '/settings/space',
+			name: 'Space',
+			meta : {
+				_id : generateObjectId(),
+				icon : 'mdi-disc',
+				showName : false,
+			},
+			component: () => import('../views/Download.vue')
+		}, {
+			path: '/settings/users',
+			name: 'Users',
+			meta : {
+				_id : generateObjectId(),
+				icon : 'mdi-account-multiple',
+				showName : false,
+			},
+			component: () => import('../views/Download.vue')
+		}, {
+			path: '/settings/integrations',
+			name: 'Integrations',
+			meta : {
+				_id : generateObjectId(),
+				icon : 'mdi-integrated-circuit-chip',
+				showName : false,
+			},
+			component: () => import('../views/Download.vue')
+		}],
 	}, {
 		path: '/logout',
 		name: 'Logout',

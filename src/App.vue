@@ -8,14 +8,14 @@
 			<div class="flex items-center">
 				<RouterLink :to="path" active-class="active" :title="name" class="flex items-center space-2 gap-2 group px-1" v-for="({ meta, name, path }, index) in cMenu" :key="`menu-${index}`" @mouseenter="slideMenuName(path, 'open')" @mouseleave="slideMenuName(path, 'close')">
 					<span :class="[meta?.icon]" class="mdi text-xl group-hover:bg-secondary-focus mask mask-squircle p-3 transition-all duration-150"></span>
-					<span :id="`nav-menu-${meta?._id}`" :style="meta?._id === $route?.meta?._id && meta?.showName ? `width: ${String(name)?.length*9}px !important` : ''" class="w-0 ease-out select-none overflow-hidden transition-all duration-300 text-sm tracking-wider whitespace-nowrap">{{ name }}</span>
+					<span :id="`nav-menu-${meta?._id}`" :style="$route.matched.some(({ path : matchedPath}) => matchedPath === path) && meta?.showName ? `width: ${String(name)?.length*9}px !important` : ''" class="w-0 ease-out select-none overflow-hidden transition-all duration-300 text-sm tracking-wider whitespace-nowrap">{{ name }}</span>
 				</RouterLink>
 			</div>
 		</div>
 		
 	</nav>
 
-	<div class="h-full min-h-screen py-4 ">
+	<div class="min-h-[calc(100vh-80px)] p-2 ">
 		<RouterView />
 	</div>
 </template>
@@ -49,7 +49,7 @@ export default {
 		cMenu() {
 			this.refreshMenu;
 
-			return orderBy(this.router.getRoutes(), 'meta.sortIndex', 'asc');
+			return orderBy(this.router.options.routes, 'meta.sortIndex', 'asc');
 		}
 	},
 	created() {
@@ -75,7 +75,7 @@ export default {
 			if(this.store.main.settings.nav.animation) {
 				const routeData = this.router.resolve(path);
 	
-				if(routeData?.meta?.showName && routeData?.meta?._id !== this.$route?.meta?._id) {
+				if(routeData?.meta?.showName && !this.$route.matched.some(({ path : matchedPath}) => matchedPath === routeData.path)) {
 					const navBar = document.getElementById(`nav-menu-${routeData.meta._id}`);
 		
 					if(navBar) {

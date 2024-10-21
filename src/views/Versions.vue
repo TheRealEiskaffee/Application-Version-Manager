@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col gap-3">
+    <div class="flex flex-col gap-3 p-2">
         <div class="w-full bg-neutral text-neutral-content p-2 rounded-md" v-for="(version, index) in versions" :key="`version-${index}-${version._id}`">
             {{ version.number }}
         </div>

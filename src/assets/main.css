@@ -6,6 +6,7 @@
 
 body {
     @apply bg-base-100;
+    overflow-y: scroll;
 }
 
 .active span:first-of-type {
