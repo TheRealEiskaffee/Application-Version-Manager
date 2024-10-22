@@ -90,7 +90,7 @@ export default createRouter({
 				showName : false,
 				sortIndex : 2,
 			},
-			component: () => import('../views/Download.vue')
+			component: () => import('../views/settings/Api.vue')
 		}, {
 			path: '/settings/space',
 			name: 'Space',
@@ -109,6 +109,7 @@ export default createRouter({
 				icon : 'mdi-account-multiple',
 				showName : false,
 				sortIndex : 4,
+				disabled : true
 			},
 			component: () => import('../views/settings/Users.vue')
 		}, {

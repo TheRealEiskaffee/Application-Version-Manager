@@ -8,7 +8,6 @@ const defaultColors = {
 	'secondary-focus': '#16585D',
 	'secondary-content': '#E1F4F5',
 
-	
 	'accent': '#22766C',
 	'accent-focus': '#1C5D54',
 	'accent-content': '#CDEAE5',
@@ -27,19 +26,21 @@ const defaultColors = {
 	'warning': '#F08B24',
 	'error': '#D83A3F',
 }
+
 export default {
 	content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
 	safelist: [
 		{
 			// pattern: /text-(info|error|success|warning)-(100|200|300)/,
 			pattern: /(text|border)-(info|error|success|warning)/,
+			pattern: /(checkbox)-(xs|sm|md|lg)/,
 			// variants: ['lg', 'hover', 'focus', 'lg:hover'],
 		}
 	],
 	daisyui: {
-		themes : {
-			dark : defaultColors,
-		}
+		themes: [{
+			dark: defaultColors,
+		}],
 	},
 	theme: {
 		extend: {

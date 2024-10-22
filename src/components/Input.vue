@@ -1,6 +1,6 @@
 <template>
-    <div class="flex items-center gap-2 cursor-pointer select-none w-fit" @click.exact.stop="cValue = !cValue">
-        <input v-model="cValue" :class="{ 'disabled' : disabled, [`checkbox-${size}`] : size }" class="checkbox checkbox-primary" type="checkbox" /> {{ label }}
+    <div class="w-full">
+        <input v-model="cValue" :type="type" :placeholder="placeholder" class="input input-sm" />
     </div>
 </template>
 
@@ -8,15 +8,15 @@
 import { getCurrentInstance } from 'vue';
 
 export default {
-    name : 'Checkbox',
+    name : 'Input',
     props : {
-        modelValue : Boolean,
-        label : String,
-        disabled : Boolean,
-        size : {
+        modelValue : String,
+        userId : String,
+        type : {
             type : String,
-            default : 'md'
-        }
+            default : 'text'
+        },
+        placeholder : String,
     },
     data : () => ({
         _id : getCurrentInstance()?.uid

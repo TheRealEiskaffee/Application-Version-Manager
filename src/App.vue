@@ -6,7 +6,7 @@
 					<img src="@/assets/logo.png" class="h-14" />
 				</a>
 			</div>
-
+			
 			<div class="col-span-8 justify-end flex items-center">
 				<RouterLink :to="path" active-class="active" :class="[meta?.disabled ? 'disabled' : '']" :title="name" class="flex items-center space-2 gap-2 group px-1" v-for="({ meta, name, path }, index) in cMenu" :key="`menu-${index}`" @mouseenter="slideMenuName(path, 'open')" @mouseleave="slideMenuName(path, 'close')">
 					<span :class="[meta?.icon]" class="mdi text-xl group-hover:bg-secondary-focus mask mask-squircle p-3 transition-all duration-150"></span>
