@@ -110,7 +110,7 @@ export default createRouter({
 				showName : false,
 				sortIndex : 4,
 			},
-			component: () => import('../views/Download.vue')
+			component: () => import('../views/settings/Users.vue')
 		}, {
 			path: '/settings/integrations',
 			name: 'Integrations',
@@ -119,6 +119,7 @@ export default createRouter({
 				icon : 'mdi-integrated-circuit-chip',
 				showName : false,
 				sortIndex : 5,
+				disabled : true
 			},
 			component: () => import('../views/Download.vue')
 		}],

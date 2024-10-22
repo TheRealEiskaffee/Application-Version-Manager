@@ -1,5 +1,5 @@
 <template>
-  <Card :title="$route.name"></Card>
+  <Card :title="$route.name?.toString()"></Card>
 </template>
 
 <script lang="ts">

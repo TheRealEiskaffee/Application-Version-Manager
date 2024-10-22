@@ -48,6 +48,16 @@ export default {
 	},
 	plugins: [
 		require('daisyui'),
+		
+        function ({ addUtilities }) {
+            const newUtilities = {
+              '.disabled': {
+                '@apply opacity-40 pointer-events-none cursor-none' : {},
+              },
+            };
+      
+            addUtilities(newUtilities, ['responsive', 'hover']);
+		},
 	],
 }
 

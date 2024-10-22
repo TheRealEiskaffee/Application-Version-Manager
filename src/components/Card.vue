@@ -1,12 +1,12 @@
 <template>
     <div class="bg-base-300 p-2 rounded-md">
-        <div v-if="title" class="divider">
-            <v-slot name="title">
+        <div v-if="title || $slots.title" class="divider">
+            <slot name="title">
                 {{ title }}
-            </v-slot>
+            </slot>
         </div>
 
-        <div class="">
+        <div>
             <slot></slot>
         </div>
     </div>
